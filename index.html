@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undangan Pernikahan Zaen & Nala</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Jost:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="locked">
+<div id="progress"></div>
+<canvas id="fx"></canvas>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <path id="circ" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/>
+</defs></svg>
+
+<section id="cover">
+  <div class="door left"></div><div class="door right"></div>
+
+  <svg width="0" height="0" style="position:absolute"><symbol id="cn" viewBox="0 0 80 80">
+    <path d="M3 62V3H62" fill="none" stroke="#d4af5f" stroke-width="1.5"/>
+    <path d="M12 48V12H48" fill="none" stroke="#d4af5f" stroke-opacity=".5"/>
+    <path d="M22 16l6 6-6 6-6-6z" fill="#d4af5f"/>
+  </symbol></svg>
+  <div class="cv-frame"></div>
+  <svg class="cv-corner c1" viewBox="0 0 80 80"><use href="#cn"/></svg>
+  <svg class="cv-corner c2" viewBox="0 0 80 80"><use href="#cn"/></svg>
+  <svg class="cv-corner c3" viewBox="0 0 80 80"><use href="#cn"/></svg>
+  <svg class="cv-corner c4" viewBox="0 0 80 80"><use href="#cn"/></svg>
+
+  <span class="sticker cv-s1" style="--r:-12deg">🕊️</span>
+  <span class="sticker cv-s2" style="--r:10deg">💍</span>
+  <span class="sticker cv-s3" style="--r:-8deg">🌹</span>
+  <span class="sticker cv-s4" style="--r:12deg">✨</span>
+
+  <div class="cover-content text-center">
+    <svg class="flourish" viewBox="0 0 300 30"><path d="M5 15 H110 M190 15 H295" stroke="#d4af5f" fill="none"/><path d="M150 3 L162 15 L150 27 L138 15Z" fill="#d4af5f"/><circle cx="122" cy="15" r="3" fill="#d4af5f"/><circle cx="178" cy="15" r="3" fill="#d4af5f"/></svg>
+    <p class="kicker mb-1">The Wedding of</p>
+    <p class="cv-top">Undangan Pernikahan</p>
+
+    <div class="cv-stage" id="stage">
+      <div class="cv-glow"></div>
+      <svg class="badge" viewBox="0 0 200 200"><text><textPath href="#circ">SAVE THE DATE ✦ 28 · 12 · 2026 ✦ SAVE THE DATE ✦</textPath></text></svg>
+      <div class="arch ph cv-arch cv-groom pulse" id="groom" role="slider" tabindex="0"
+           aria-label="Geser foto mempelai pria ke arah mempelai wanita"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <img src="img/pria.png" alt="Mempelai pria" draggable="false">
+      </div>
+      <div class="cv-hint"><span>Geser</span><i>→</i></div>
+      <div class="arch ph cv-arch cv-bride" id="bride">
+        <img src="img/wanita.png" alt="Mempelai wanita" draggable="false">
+      </div>
+
+      <div class="cv-track" aria-hidden="true">
+        <span class="cv-rail"></span>
+        <span class="cv-fill"></span>
+        <span class="cv-knob">✦</span>
+        <span class="cv-end">♥</span>
+      </div>
+      <span class="cv-heart">💞</span>
+    </div>
+    <p class="cv-caption" id="caption">Geser foto mempelai pria ke arah mempelai wanita</p>
+
+    <h1 class="script gold">Zaen &amp; Nala</h1>
+    <p class="cv-date">Senin, 28 Desember 2026</p>
+    <p class="cv-chip" id="chip"></p>
+    <p class="cv-quote">“Dua jiwa, satu perjalanan”</p>
+
+    <p class="small-cap mb-0">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+    <p class="guest" id="guestName">Tamu Undangan</p>
+    <button id="openBtn" class="btn-gold shine" disabled>Buka Undangan</button>
+  </div>
+</section>
+
+<main id="invitation">
+
+  <section class="hero text-center">
+    <video class="bgvid" autoplay muted loop playsinline preload="auto"><source src="video/bg.mp4" type="video/mp4"></video>
+    <div class="veil"></div>
+    <span class="sticker s-a" style="--r:-12deg">🕊️</span>
+    <span class="sticker s-b" style="--r:10deg">💍</span>
+    <span class="sticker s-c" style="--r:-6deg">🌹</span>
+
+    <span class="floating-deco d-1">✨</span>
+    <span class="floating-deco d-2">🕊️</span>
+    <span class="floating-deco d-3">🌸</span>
+    <div class="hero-in">
+      <p class="kicker">Kami mengundang Anda ke pernikahan</p>
+      <div class="duo big">
+        <div class="arch ph a-l"><img src="img/pria.png" alt="Mempelai pria" style="object-position:50% 20%"></div>
+        <svg class="badge" viewBox="0 0 200 200"><text><textPath href="#circ">WE ARE GETTING MARRIED ✦ FOREVER &amp; ALWAYS ✦</textPath></text><text x="100" y="116" text-anchor="middle" class="bm">Z&amp;N</text></svg>
+        <div class="arch ph a-r"><img src="img/wanita.png" alt="Mempelai wanita" style="object-position:50% 20%"></div>
+      </div>
+      <h2 class="script gold names">Zaen &amp; Nala</h2>
+      <div class="orn"><i></i></div>
+      <p class="date">Senin, 28 Desember 2026</p>
+      <div id="countdown" class="d-flex justify-content-center gap-2 gap-md-3 mt-4">
+        <div><b id="cd-d">0</b><small>Hari</small></div>
+        <div><b id="cd-h">0</b><small>Jam</small></div>
+        <div><b id="cd-m">0</b><small>Menit</small></div>
+        <div><b id="cd-s">0</b><small>Detik</small></div>
+      </div>
+      <p class="scroll-hint">Gulir ke bawah ↓</p>
+    </div>
+  </section>
+
+  <div class="marquee"><div class="track">
+    <span>SAVE THE DATE ✦ 28 DESEMBER 2026 ✦ ZAEN &amp; NALA ✦ FOREVER &amp; ALWAYS ✦ </span>
+    <span>SAVE THE DATE ✦ 28 DESEMBER 2026 ✦ ZAEN &amp; NALA ✦ FOREVER &amp; ALWAYS ✦ </span>
+  </div></div>
+
+  <section class="opening text-center reveal">
+    <div class="container" style="max-width:680px">
+      <p class="kicker">Salam Bahagia &amp; Sejahtera</p>
+      <p class="script gold" style="font-size:2.6rem">Dengan Restu &amp; Doa</p>
+      <p class="lead-serif">Dengan memohon rahmat dan restu Tuhan Yang Maha Esa, kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
+    </div>
+  </section>
+
+  <section class="quote text-center reveal">
+    <span class="sticker s-l" style="--r:-10deg">💌</span>
+    <span class="sticker s-r" style="--r:12deg">✨</span>
+    <div class="container" style="max-width:700px">
+      <svg class="flourish" viewBox="0 0 300 30"><path d="M5 15 H110 M190 15 H295" stroke="#d4af5f" fill="none"/><path d="M150 3 L162 15 L150 27 L138 15Z" fill="#d4af5f"/><circle cx="122" cy="15" r="3" fill="#d4af5f"/><circle cx="178" cy="15" r="3" fill="#d4af5f"/></svg>
+      <p class="script gold" style="font-size:2.8rem">Dua jiwa, satu perjalanan</p>
+      <p class="lead-serif">Dengan segala syukur, kami mengundang Anda untuk menjadi saksi dan memberi restu pada hari bahagia kami.</p>
+      <span class="tape">Forever &amp; Always</span>
+    </div>
+  </section>
+
+  <section class="couple reveal">
+    <svg width="0" height="0" style="position:absolute"><symbol id="branch" viewBox="0 0 60 220">
+      <path d="M28 214C25 150 31 70 28 6" fill="none" stroke="#d4af5f" stroke-width="1.3"/>
+      <g fill="#d4af5f" fill-opacity=".9">
+        <path transform="translate(27 200)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(29 182) scale(-1 1)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(27 160) scale(.95)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(29 140) scale(-.95 .95)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(28 116) scale(.85)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(28 96) scale(-.85 .85)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(28 70) scale(.72)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(28 50) scale(-.72 .72)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+        <path transform="translate(28 28) scale(.6)" d="M0 0C-14-6-22-20-22-32C-8-30 0-16 0 0Z"/>
+      </g>
+      <path d="M28 0l4 6-4 6-4-6z" fill="#f5e2a3"/>
+    </symbol></svg>
+
+    <div class="cupid" id="cupid" role="img" aria-label="Dewa cinta terbang membawa panah cinta">
+      <div class="cp-flip"><div class="cp-spin">
+        <svg viewBox="0 0 140 130" aria-hidden="true">
+          <g transform="translate(-5 -6)"><g class="cp-w cp-back">
+            <path d="M62 58C40 56 14 44 8 18C30 14 52 28 62 46Z" fill="#f4ecd8" stroke="#c9a24d" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M48 44C38 38 26 30 18 24M54 50C42 46 30 40 20 34" stroke="#c9a24d" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g></g>
+          <g class="cp-leg">
+            <ellipse cx="60" cy="100" rx="6" ry="9" fill="#ffd9b8" stroke="#6b4528" stroke-width="2" transform="rotate(10 60 100)"/>
+            <ellipse cx="74" cy="99" rx="6" ry="9" fill="#ffd9b8" stroke="#6b4528" stroke-width="2" transform="rotate(-18 74 99)"/>
+          </g>
+          <ellipse cx="66" cy="80" rx="15" ry="17" fill="#ffd9b8" stroke="#6b4528" stroke-width="2.2"/>
+          <path d="M56 66L78 90" stroke="#d4af5f" stroke-width="4" stroke-linecap="round"/>
+          <path d="M51 86C54 100 78 100 81 86C74 91 58 91 51 86Z" fill="#e9c1b5" stroke="#6b4528" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M82 62H122" stroke="#8a6238" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M86 62L77 55L81 62L77 69Z" fill="#fff" stroke="#6b4528" stroke-width="1.4" stroke-linejoin="round"/>
+          <path transform="translate(129 62) rotate(-90)" d="M0 8C-10 0-9-9-3-9C-1-9 0-7 0-6C0-7 1-9 3-9C9-9 10 0 0 8Z" fill="#e0475b" stroke="#6b4528" stroke-width="1.6" stroke-linejoin="round"/>
+          <g class="cp-w">
+            <path d="M62 58C40 56 14 44 8 18C30 14 52 28 62 46Z" fill="#fff" stroke="#c9a24d" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M48 44C38 38 26 30 18 24M54 50C42 46 30 40 20 34" stroke="#c9a24d" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g>
+          <path d="M96 24C118 38 118 86 96 100" fill="none" stroke="#c9a24d" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M96 24V100" stroke="#f4ecd8" stroke-width="1.5"/>
+          <path d="M72 72C84 76 100 70 108 63" fill="none" stroke="#6b4528" stroke-width="9" stroke-linecap="round"/>
+          <path d="M72 72C84 76 100 70 108 63" fill="none" stroke="#ffd9b8" stroke-width="5.4" stroke-linecap="round"/>
+          <circle cx="111" cy="62" r="5.5" fill="#ffd9b8" stroke="#6b4528" stroke-width="2"/>
+          <circle cx="68" cy="47" r="21" fill="#ffd9b8" stroke="#6b4528" stroke-width="2.4"/>
+          <path d="M49 41C48 26 66 20 80 26C86 29 88 34 87 38C80 31 66 31 58 40Z" fill="#f5c451" stroke="#6b4528" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M68 26C62 17 72 12 76 18C79 22 73 25 71 23" fill="none" stroke="#6b4528" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="61" cy="50" r="2.8" fill="#3b2415"/><circle cx="76" cy="50" r="2.8" fill="#3b2415"/>
+          <circle cx="62" cy="49" r="1" fill="#fff"/><circle cx="77" cy="49" r="1" fill="#fff"/>
+          <circle cx="56" cy="57" r="4.2" fill="#ff8fa3" opacity=".55"/><circle cx="82" cy="57" r="4.2" fill="#ff8fa3" opacity=".55"/>
+          <path d="M63 58C67 64 74 64 77 58" fill="none" stroke="#6b4528" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </div></div>
+    </div>
+
+    <div class="container">
+      <h2 class="title">Mempelai</h2>
+      <div class="orn"><i></i></div>
+      <div class="row g-5 justify-content-center mt-1 text-center">
+        <div class="col-md-5">
+          <div class="wrap-arch">
+            <svg class="branch bl" viewBox="0 0 60 220"><use href="#branch" width="60" height="220"/></svg>
+            <svg class="branch br" viewBox="0 0 60 220"><use href="#branch" width="60" height="220"/></svg>
+            <i class="tw" style="top:6%;left:14%"></i>
+            <i class="tw" style="top:32%;right:6%;animation-delay:-1s"></i>
+            <i class="tw" style="bottom:24%;left:8%;animation-delay:-1.8s"></i>
+            <div class="arch big ph"><img src="img/pria.png" alt="Zaen Made Dewandra" style="object-position:50% 15%"></div>
+            <span class="tape role">Mempelai Pria</span>
+          </div>
+          <h3 class="script gold">Zaen Made Dewandra</h3>
+          <p class="parents">Putra dari<br>Bapak I Wayan Satria &amp; Ibu Ni Kadek Pradnyan</p>
+          <a class="ig" target="_blank" rel="noopener" href="https://instagram.com/username_zaen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@username_zaen</a>
+        </div>
+
+        <div class="col-md-2 pair-mid" aria-hidden="true">
+          <span class="pm-line"></span>
+          <svg class="pm-rings" viewBox="0 0 80 50" width="74"><circle cx="30" cy="28" r="16" fill="none" stroke="#d4af5f" stroke-width="2"/><circle cx="50" cy="28" r="16" fill="none" stroke="#f5e2a3" stroke-width="2"/><path d="M30 5l4 5-4 5-4-5z" fill="#f5e2a3"/></svg>
+          <span class="script gold pm-amp">&amp;</span>
+          <span class="pm-line"></span>
+        </div>
+
+        <div class="col-md-5">
+          <div class="wrap-arch">
+            <svg class="branch bl" viewBox="0 0 60 220"><use href="#branch" width="60" height="220"/></svg>
+            <svg class="branch br" viewBox="0 0 60 220"><use href="#branch" width="60" height="220"/></svg>
+            <i class="tw" style="top:8%;right:14%;animation-delay:-.6s"></i>
+            <i class="tw" style="top:36%;left:6%;animation-delay:-1.4s"></i>
+            <i class="tw" style="bottom:26%;right:8%;animation-delay:-2.1s"></i>
+            <div class="arch big ph"><img src="img/wanita.png" alt="Nala Danadyaksa Ghaida" style="object-position:50% 15%"></div>
+            <span class="tape role">Mempelai Wanita</span>
+          </div>
+          <h3 class="script gold">Nala Danadyaksa Ghaida</h3>
+          <p class="parents">Putri dari<br>Bapak Jaka Perdana &amp; Ibu Ratna Suminar</p>
+          <a class="ig" target="_blank" rel="noopener" href="https://instagram.com/username_nala"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@username_nala</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="facts reveal">
+    <div class="container">
+      <h2 class="title">Mengenal Kami</h2>
+      <div class="orn"><i></i></div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5"><div class="frame">
+          <h3 class="script gold">Zaen</h3>
+          <ul class="fact-list">
+            <li><span>Hobi</span><b>Badminton</b></li>
+            <li><span>Makanan favorit</span><b>Nasi Goreng</b></li>
+            <li><span>Lagu favorit</span><b>Someone You Loved</b></li>
+            <li><span>Sifat</span><b>Peduli</b></li>
+          </ul>
+        </div></div>
+        <div class="col-md-5"><div class="frame">
+          <h3 class="script gold">Nala</h3>
+          <ul class="fact-list">
+            <li><span>Hobi</span><b>Badminton</b></li>
+            <li><span>Makanan favorit</span><b>Sate</b></li>
+            <li><span>Lagu favorit</span><b>Butterfly</b></li>
+            <li><span>Sifat</span><b>Penyayang</b></li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story reveal">
+    <div class="container" style="max-width:760px">
+      <h2 class="title">Kisah Kami</h2>
+      <div class="orn"><i></i></div>
+      <div class="timeline">
+        <div class="tl"><span>Awal</span><div><h4>Awal Pertemuan</h4><p>Semua bermula di tahun 2021. Takdir mempertemukan kami di sebuah acara. Awalnya hanya saling mengenal sebagai teman biasa, namun kenyamanan dalam setiap obrolan perlahan menumbuhkan benih-benih rasa yang berbeda. Hubungan kami pun berlanjut menjadi sepasang kekasih sejak 24 Maret 2022.</p></div></div>
+        <div class="tl"><span>Bersama</span><div><h4>Perjalanan Bersama</h4><p>4 tahun telah berlalu, membawa kami melewati berbagai cerita, tawa, dan tantangan. Jarak, waktu, dan dinamika kehidupan justru mendewasakan cara kami saling memahami. Kami belajar bahwa cinta bukan hanya tentang kebahagiaan saat bersama, melainkan tentang komitmen untuk saling mendukung, bertumbuh, dan setia dalam setiap keadaan.</p></div></div>
+        <div class="tl"><span>Lamaran</span><div><h4>Satu Tujuan</h4><p>Hingga akhirnya, kami menyadari bahwa masa depan yang ingin kami tuju adalah masa depan yang kami bangun bersama. Pada tanggal 4 Januari 2026, di hadapan keluarga tercinta, kami memantapkan hati untuk melangkah ke jenjang yang lebih sakral.</p>
+        <img class="tl-photo" src="img/g5.jpg" alt="Momen lamaran" loading="lazy">
+        </div></div>
+        <div class="tl"><span>Menikah</span><div><h4>Menuju Babak Baru</h4><p>Kini, dengan restu orang tua dan keyakinan penuh di hati, kami siap memulai babak baru sebagai suami istri. Hari pernikahan ini adalah awal dari janji seumur hidup kami untuk saling menjaga hingga akhir usia.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="family reveal">
+    <div class="container">
+      <h2 class="title">Sambutan Keluarga</h2>
+      <div class="orn"><i></i></div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5"><div class="frame">
+          <p class="lead-serif">Dengan penuh syukur, kami menyambut hari bahagia putra kami, Zaen. Semoga ia dan Nala senantiasa saling menjaga dan membangun keluarga yang penuh kasih.</p>
+          <p class="sign">Bapak I Wayan Satria &amp; Ibu Ni Kadek Pradnyan</p>
+        </div></div>
+        <div class="col-md-5"><div class="frame">
+          <p class="lead-serif">Dengan bangga dan penuh syukur, kami menyambut hari bahagia putri kami, Nala. Terima kasih atas doa dan kehadiran Bapak/Ibu/Saudara/i.</p>
+          <p class="sign">Bapak Jaka Perdana &amp; Ibu Ratna Suminar</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="events reveal">
+    <span class="sticker s-l" style="--r:8deg">🥂</span>
+    <div class="container">
+      <h2 class="title">Waktu &amp; Tempat</h2>
+      <div class="orn"><i></i></div>
+      <div class="row g-4 mt-1 justify-content-center">
+        <div class="col-md-5"><div class="frame tilt">
+          <svg viewBox="0 0 24 24" width="38" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+          <h3>Akad Nikah</h3>
+          <p class="big-d">28 Desember 2026</p><p>Pukul 11.00 WIB</p>
+          <p class="place">Jl. Ketintang Wiyata (Jl. Ketintang No. 2)<br>Kel. Ketintang, Kec. Gayungan<br>Kota Surabaya, Jawa Timur 60231</p>
+        </div></div>
+        <div class="col-md-5"><div class="frame tilt">
+          <svg viewBox="0 0 24 24" width="38" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 21h8"/></svg>
+          <h3>Resepsi</h3>
+          <p class="big-d">28 Desember 2026</p><p>Pukul 11.00 WIB – selesai</p>
+          <p class="place">Jl. Ketintang Wiyata (Jl. Ketintang No. 2)<br>Kel. Ketintang, Kec. Gayungan<br>Kota Surabaya, Jawa Timur 60231</p>
+        </div></div>
+      </div>
+
+      <div class="dress text-center">
+        <h3>Dress Code</h3>
+        <p class="parents">Tampil elegan dengan nuansa warna berikut</p>
+        <div class="d-flex justify-content-center gap-3">
+          <i style="background:#12403a"></i><i style="background:#d4af5f"></i><i style="background:#f4ecd8"></i><i style="background:#e9c1b5"></i>
+        </div>
+      </div>
+
+      <div class="text-center mt-5 d-flex gap-3 justify-content-center flex-wrap">
+        <a class="btn-gold shine" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Jl.+Ketintang+Wiyata,+Gayungan,+Surabaya+60231">Lihat Lokasi</a>
+        <a class="btn-line" id="calBtn" href="#">Simpan ke Kalender</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rundown alt reveal">
+    <div class="container" style="max-width:760px">
+      <h2 class="title">Rundown Acara</h2>
+      <div class="orn"><i></i></div>
+      <div class="timeline">
+        <div class="tl"><span>10.30</span><div><h4>Penyambutan Tamu</h4><p>Registrasi dan penerimaan tamu undangan.</p></div></div>
+        <div class="tl"><span>11.00</span><div><h4>Akad Nikah</h4><p>Prosesi akad nikah.</p></div></div>
+        <div class="tl"><span>11.30</span><div><h4>Resepsi &amp; Ramah Tamah</h4><p>Penyambutan mempelai dan ramah tamah bersama keluarga dan tamu.</p></div></div>
+        <div class="tl"><span>12.00</span><div><h4>Santap Bersama</h4><p>Menikmati hidangan bersama.</p></div></div>
+        <div class="tl"><span>13.00</span><div><h4>Foto Bersama</h4><p>Sesi foto bersama mempelai dan keluarga.</p></div></div>
+        <div class="tl"><span>14.00</span><div><h4>Penutup</h4><p>Acara selesai. Terima kasih atas kehadiran Anda.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="maps reveal">
+    <div class="container" style="max-width:860px">
+      <h2 class="title">Peta Lokasi</h2>
+      <div class="orn"><i></i></div>
+      <div class="map-wrap">
+        <iframe title="Peta lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Jl.+Ketintang+Wiyata,+Gayungan,+Surabaya+60231&amp;output=embed"></iframe>
+      </div>
+      <p class="parents text-center mt-3">Jl. Ketintang Wiyata (Jl. Ketintang No. 2), Kel. Ketintang, Kec. Gayungan, Surabaya 60231</p>
+      <div class="text-center mt-3">
+        <a class="btn-gold shine" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Jl.+Ketintang+Wiyata,+Gayungan,+Surabaya+60231">Buka di Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="guestinfo alt reveal">
+    <div class="container" style="max-width:700px">
+      <h2 class="title">Info untuk Tamu</h2>
+      <div class="orn"><i></i></div>
+      <details class="faq" open><summary>Parkir</summary><p>Area parkir tersedia di lokasi acara. Mohon mengikuti arahan petugas parkir.</p></details>
+      <details class="faq"><summary>Dress Code</summary><p>Mohon mengenakan busana dengan nuansa emerald, emas, krem, atau blush agar serasi dengan tema acara.</p></details>
+      <details class="faq"><summary>Membawa Anak</summary><p>Anak-anak dipersilakan hadir bersama orang tua. Mohon dampingi selama acara berlangsung.</p></details>
+      <details class="faq"><summary>Cara Menuju Lokasi</summary><p>Gunakan tombol "Buka di Google Maps" pada bagian peta di atas untuk petunjuk arah dari lokasi Anda.</p></details>
+    </div>
+  </section>
+
+  <section class="live text-center reveal">
+    <div class="container" style="max-width:560px">
+      <div class="frame">
+        <span class="live-ic">📡</span>
+        <h3>Siaran Langsung</h3>
+        <p class="parents">Bagi Anda yang tidak dapat hadir, saksikan prosesi acara kami secara langsung.</p>
+        <a class="btn-gold shine" target="_blank" rel="noopener" href="https://www.youtube.com/">Tonton Siaran</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery reveal">
+    <div class="container">
+      <h2 class="title">Galeri</h2>
+      <div class="orn"><i></i></div>
+      
+      <div class="gallery-grid mt-4">
+        <div class="shot g-left-big">
+          <img src="img/g1.jpg" alt="Foto formal berdua" style="object-position: 50% 20%;">
+        </div>
+
+        <div class="g-right-side">
+          <div class="shot"><img src="img/g5.jpg" alt="Momen lamaran"></div>
+
+          <div class="g-right-mid">
+            <div class="shot"><img src="img/g3.jpg" alt="Potret dekat berdua"></div>
+            <div class="shot"><img src="img/g4.jpg" alt="Berdua di taman"></div>
+          </div>
+          
+          <div class="shot"><img src="img/g2.jpg" alt="Gaun dan jas putih"></div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="memories reveal">
+    <div class="container">
+      <h2 class="title">Kenangan</h2>
+      <div class="orn"><i></i></div>
+      <p class="text-center parents">Geser foto untuk menata ulang. Ketuk untuk membalik.</p>
+      <div class="pol-stage" id="polStage">
+        <div class="pol" data-r="-9"><div class="pol-in">
+          <div class="pf"><img src="img/g1.jpg" alt="Foto formal berdua" draggable="false" loading="lazy"><span>Berdua, selalu</span></div>
+          <div class="pb"><p>Satu bingkai, seribu cerita.</p></div></div></div>
+        <div class="pol" data-r="6"><div class="pol-in">
+          <div class="pf"><img src="img/g5.jpg" alt="Momen lamaran" draggable="false" loading="lazy"><span>Hari kami berkomitmen</span></div>
+          <div class="pb"><p>Dari satu langkah kecil menuju janji seumur hidup.</p></div></div></div>
+        <div class="pol" data-r="-4"><div class="pol-in">
+          <div class="pf"><img src="img/g3.jpg" alt="Potret dekat berdua" draggable="false" loading="lazy"><span>Tatapan yang sama</span></div>
+          <div class="pb"><p>Tanpa kata pun, kami saling mengerti.</p></div></div></div>
+        <div class="pol" data-r="8"><div class="pol-in">
+          <div class="pf"><img src="img/g4.jpg" alt="Berdua di taman" draggable="false" loading="lazy"><span>Santai di taman</span></div>
+          <div class="pb"><p>Hal sederhana terasa istimewa bila bersamamu.</p></div></div></div>
+        <div class="pol" data-r="-7"><div class="pol-in">
+          <div class="pf"><img src="img/g2.jpg" alt="Gaun dan jas putih" draggable="false" loading="lazy"><span>Menuju hari bahagia</span></div>
+          <div class="pb"><p>Sebentar lagi, kami resmi menjadi satu.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="song alt reveal">
+    <div class="container text-center" style="max-width:640px">
+      <h2 class="title">Lagu Kami</h2>
+      <div class="orn"><i></i></div>
+      <div class="vinyl" id="vinyl"><span class="v-label">Z&amp;N</span></div>
+      <h3 id="songTitle">Judul Lagu — Artis</h3>
+      <p class="parents" id="songNote">Putar lagu yang menemani perjalanan kami.</p>
+      <button class="btn-gold shine" id="songBtn" type="button">Putar Lagu</button>
+      <audio id="songAudio" src="audio/lagu.mp3" preload="none"></audio>
+
+      <div class="together" id="together">
+        <p class="kicker">Sudah bersama selama</p>
+        <p class="big-num" id="daysNum">0</p>
+        <p class="parents" id="daysSub">hari</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quiz reveal">
+    <div class="container" style="max-width:620px">
+      <h2 class="title">Kuis Kami</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead-serif text-center">Seberapa kenal kamu dengan Zaen &amp; Nala?</p>
+      <div class="frame mt-4">
+        <div id="quizBody">
+          <div class="q-top"><span id="qNum"></span><span id="qScore"></span></div>
+          <div class="q-bar"><i id="qBar"></i></div>
+          <h3 id="qText"></h3>
+          <div class="q-opts" id="qOpts"></div>
+          <p class="q-note" id="qNote"></p>
+          <button class="btn-gold shine" id="qNext" type="button" hidden>Lanjut</button>
+        </div>
+        <div id="qEnd" hidden>
+          <p class="kicker">Skor akhirmu</p>
+          <p class="q-final" id="qFinal"></p>
+          <p class="lead-serif" id="qMsg"></p>
+          <button class="btn-line mt-3" id="qAgain" type="button">Main Lagi</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hashtag text-center reveal">
+    <div class="container" style="max-width:640px">
+      <h2 class="title">Bagikan Momen</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead-serif">Abadikan kebahagiaan bersama kami. Gunakan hashtag ini saat mengunggah foto dan videomu.</p>
+      <p class="tag script gold" id="tagText">#ZaenNala2026</p>
+      <button class="btn-line" id="tagBtn" type="button">Salin Hashtag</button>
+    </div>
+  </section>
+
+  <section class="photoframe alt reveal">
+    <div class="container text-center" style="max-width:520px">
+      <h2 class="title">Bingkai Foto</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead-serif">Pasang fotomu di bingkai undangan kami, lalu bagikan dengan hashtag.</p>
+      <canvas id="fpCanvas" width="1080" height="1350" aria-label="Pratinjau bingkai foto"></canvas>
+      <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+        <button class="btn-line" id="fpPick" type="button">Pilih Foto</button>
+        <input id="fpInput" type="file" accept="image/*" hidden>
+        <button class="btn-gold shine" id="fpDl" type="button" disabled>Unduh</button>
+      </div>
+      <p class="parents mt-3" style="font-size:.85rem">Foto diproses di perangkatmu dan tidak diunggah ke mana pun.</p>
+    </div>
+  </section>
+
+  <section class="gift-sec reveal">
+    <div class="container" style="max-width:520px">
+      <h2 class="title">Tanda Kasih</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead-serif">Kehadiran dan doa Anda adalah hadiah terindah. Bila ingin berbagi tanda kasih, dengan senang hati kami terima.</p>
+      <div class="frame card-bank">
+        <p class="mb-1">Seabank</p>
+        <p class="acc" id="accNo">00839248723</p>
+        <p>a.n. I Wayan Satria</p>
+        <button class="btn-line" id="copyBtn">Salin Nomor Rekening</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp reveal">
+    <div class="container" style="max-width:620px">
+      <h2 class="title">Konfirmasi &amp; Ucapan</h2>
+      <div class="orn"><i></i></div>
+      <div class="wish-sky" id="wishSky" aria-label="Ucapan dari tamu"></div>
+      <form id="rsvpForm" class="mt-4" novalidate>
+        <div class="mb-3"><label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama" required>
+          <div class="invalid-feedback">Nama wajib diisi.</div></div>
+        <div class="mb-3"><label for="hadir" class="form-label">Kehadiran</label>
+          <select class="form-select" id="hadir" required>
+            <option value="">Pilih…</option><option>Hadir</option><option>Tidak hadir</option><option>Masih ragu</option>
+          </select>
+          <div class="invalid-feedback">Pilih salah satu.</div></div>
+        <div class="mb-4"><label for="pesan" class="form-label">Ucapan &amp; doa</label>
+          <textarea class="form-control" id="pesan" rows="3" required></textarea>
+          <div class="invalid-feedback">Tulis ucapan singkat.</div></div>
+        <button class="btn-gold shine w-100" type="submit">Kirim Ucapan</button>
+        <button class="btn-line w-100 mt-3" type="button" id="waBtn">Konfirmasi via WhatsApp</button>
+      </form>
+      <div id="wishes" class="mt-5"></div>
+    </div>
+  </section>  
+
+  <footer class="text-center">
+    <div class="monogram">Z<span>&amp;</span>N</div>
+    <button class="btn-line mb-4" id="partyBtn" type="button">Rayakan ✦</button>
+    <p class="lead-serif mb-2">Merupakan kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu. Terima kasih.</p>
+    <p class="lead-serif mb-2">Kami yang berbahagia,
+Keluarga Besar Bapak I Wayan Satria & Ibu Ni Kadek Pradnyan
+dan Bapak Jaka Perdana & Ibu Ratna Suminar</p>
+    <p class="script gold" style="font-size:2.8rem">Zaen &amp; Nala</p>
+  </footer>
+</main>
+
+<button id="musicBtn" aria-label="Putar atau jeda musik" hidden>♪</button>
+<audio id="bgm" loop src="audio/musik.mp3"></audio>
+
+<div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content bg-transparent border-0">
+    <img id="lightImg" class="img-fluid" alt="">
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
